@@ -25,3 +25,38 @@ Clone the repository:
 ```bash
 git clone https://github.com/deltatl/ttpmatcher.git
 cd ttpmatcher
+
+## Usage
+Basic example:
+python3 ttpmatcher.py \
+  --source stix \
+  --stix-file enterprise-attack.json \
+  --mode parent \
+  --collapse-aliases \
+  --ttps T1059 T1566.001 T1078 \
+  --top 10\
+
+Example with filters:
+python3 ttpmatcher.py \
+  --source stix \
+  --stix-file enterprise-attack.json \
+  --mode parent \
+  --platform Windows \
+  --min-tactics 2 \
+  --downweight T1059,T1047,T1105 \
+  --ignore T1204.002 \
+  --collapse-aliases \
+  --ttps T1059 T1566.001 T1078 \
+  --top 10
+
+Export Results
+python3 ttpmatcher.py \
+  --source stix \
+  --stix-file enterprise-attack.json \
+  --mode parent \
+  --collapse-aliases \
+  --ttps T1059 T1566.001 T1078 \
+  --top 10 \
+  --export-csv results.csv
+
+
