@@ -1,7 +1,7 @@
 # TTP Matcher
 
 **TTP Matcher** is a Python utility for Cyber Threat Intelligence (CTI) analysts.  
-It matches **observed ATT&CK techniques (TTPs)** against known **MITRE ATT&CK intrusion sets (threat actors)**.
+It matches **observed MITRE ATT&CK techniques (TTPs)** against known **intrusion sets (threat actors)**.
 
 ## Features
 - Supports MITRE ATT&CK Enterprise **STIX 2.1 JSON** or simple **CSV mapping**
@@ -25,18 +25,21 @@ Clone the repository:
 ```bash
 git clone https://github.com/deltatl/ttpmatcher.git
 cd ttpmatcher
-
+```
 ## Usage
+
 Basic example:
+```bash
 python3 ttpmatcher.py \
   --source stix \
   --stix-file enterprise-attack.json \
   --mode parent \
   --collapse-aliases \
   --ttps T1059 T1566.001 T1078 \
-  --top 10\
-
+  --top 10
+```
 Example with filters:
+```bash
 python3 ttpmatcher.py \
   --source stix \
   --stix-file enterprise-attack.json \
@@ -48,8 +51,20 @@ python3 ttpmatcher.py \
   --collapse-aliases \
   --ttps T1059 T1566.001 T1078 \
   --top 10
-
-Export Results
+  ```
+Export results to JSON:
+```bash
+python3 ttpmatcher.py \
+  --source stix \
+  --stix-file enterprise-attack.json \
+  --mode parent \
+  --collapse-aliases \
+  --ttps T1059 T1566.001 T1078 \
+  --top 10 \
+  --export-json results.json
+```
+Export results to CSV:
+```bash
 python3 ttpmatcher.py \
   --source stix \
   --stix-file enterprise-attack.json \
@@ -58,5 +73,9 @@ python3 ttpmatcher.py \
   --ttps T1059 T1566.001 T1078 \
   --top 10 \
   --export-csv results.csv
+```
+Requirements
 
+Python 3.8+
 
+MITRE ATT&CK Enterprise STIX JSON (download from MITRE ATT&CK)
